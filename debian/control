@@ -1,0 +1,19 @@
+Source: onmetal-image
+Section: misc
+Priority: optional
+Maintainer: Garden Linux <contact@gardenlinux.io>
+Build-Depends:
+ debhelper-compat (= 13),
+ golang-go:native,
+ golang-golang-x-tools
+Standards-Version: 4.5.1
+Homepage: https://github.com/onmetal/onmetal-image
+Rules-Requires-Root: no
+
+Package: onmetal-image
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+Description: onmetal-image is the OCI specification 
+  for images handled by onmetal
