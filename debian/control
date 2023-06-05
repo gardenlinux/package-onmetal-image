@@ -5,8 +5,9 @@ Maintainer: Garden Linux <contact@gardenlinux.io>
 Build-Depends:
  debhelper-compat (= 13),
  golang-go:native,
- golang-golang-x-tools
-Standards-Version: 4.5.1
+ golang-golang-x-tools,
+ git
+Standards-Version: 4.6.0
 Homepage: https://github.com/onmetal/onmetal-image
 Rules-Requires-Root: no
 
