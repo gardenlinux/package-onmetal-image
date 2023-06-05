@@ -4,20 +4,27 @@ include /usr/share/dpkg/pkg-info.mk
 
 export GOARCH = $(DEB_HOST_ARCH_CPU)
 export GOOS = $(DEB_HOST_ARCH_OS)
-export GOCACHE = $(CURDIR)/debian/.build/.cache/go-build
+export GOCACHE = $(CURDIR)/debian/.go-cache
 
 %:
-	dh $@
+	dh $@ --buildsystem=none
+
+source:
+	go mod vendor
 
 override_dh_auto_configure:
 	:
 
 override_dh_auto_build:
-	go build -ldflags="-s -w -X main.version=$(DEB_VERSION_UPSTREAM)" -mod=vendor -o debian/.build/onmetal-image ./cmd
+	go build -ldflags="-s -w -X main.version=$(DEB_VERSION_UPSTREAM)" -mod=vendor -o debian/.go-build/onmetal-image ./cmd
 
 override_dh_auto_test:
 	go test -v -mod=vendor ./cmd
 
 override_dh_auto_install:
+	:
+
+# Should be disabled by default and breaks (https://bugs.debian.org/1016563)
+override_dh_dwz:
 	:
 

@@ -1,9 +1,10 @@
 include:
-- project: gardenlinux/gardenlinux-package-build
-  file:
-  - pipeline/pipeline.yml
+  project: gardenlinux/gardenlinux-package-build
+  file: pipeline/pipeline-git.yml
 
 variables:
-  # Define the source of this package
   SOURCE_NAME: 'onmetal-image'
-  ORIG_TAR: 'onmetal-image_0.0~git20220927.d73b45a.orig.tar.xz'
+  SOURCE_REPO: https://github.com/onmetal/onmetal-image
+  SOURCE_TAG_PREFIX: 'v'
+  BUILD_REQUIRES_GO: 'yes'
+  SOURCE_APT_INSTALL: golang-go
