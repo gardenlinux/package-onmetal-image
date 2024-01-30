@@ -9,14 +9,12 @@ export GOCACHE = $(CURDIR)/debian/.go-cache
 %:
 	dh $@ --buildsystem=none
 
-source:
-	go mod vendor
-
 override_dh_auto_configure:
 	:
 
 override_dh_auto_build:
-	go build -ldflags="-s -w -X main.version=$(DEB_VERSION_UPSTREAM)" -mod=vendor -o debian/.go-build/onmetal-image ./cmd
+	go mod vendor
+	go build -ldflags="-s -w -X main.version=$(DEB_VERSION_UPSTREAM)" -mod vendor -o debian/.go-build/onmetal-image ./cmd
 
 override_dh_auto_test:
 	go test -v -mod=vendor ./cmd
@@ -27,4 +25,3 @@ override_dh_auto_install:
 # Should be disabled by default and breaks (https://bugs.debian.org/1016563)
 override_dh_dwz:
 	:
-
