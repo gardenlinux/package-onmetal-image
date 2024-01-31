@@ -3,3 +3,4 @@ version_orig=0.1.1
 version="$version_orig-0"
 git_src --branch "v$version_orig" https://github.com/onmetal/onmetal-image
 import_src src
+version_suffix=gardenlinux0
